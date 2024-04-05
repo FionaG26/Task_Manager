@@ -22,15 +22,16 @@ The Thesis Task Manager is a Python application designed to assist users in mana
 
    ```bash
    git clone https://github.com/FionaG26/Task-Manager.git
+    ```
    
 2. Install dependencies
  ```bash
 pip install PyQt5
-
+  ```
 3. Run the application
  ```bash
 python thesis_task_manager.py
-```
+ ```
 ## Usage
 1. Launch the application.
 2. Add tasks by entering the title, description, category, priority, and deadline.
