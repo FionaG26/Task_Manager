@@ -1,5 +1,10 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QTextEdit, QListWidget, QMessageBox, QLineEdit, QComboBox
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QLabel, QPushButton, QTextEdit, QListWidget, QMessageBox,
+    QLineEdit, QComboBox
+)
+
 from PyQt5.QtCore import Qt
 from datetime import datetime, timedelta
 
@@ -37,7 +42,13 @@ class ThesisTaskManager(QMainWindow):
 
         self.category_label = QLabel("Category:")
         self.category_combo = QComboBox()
-        self.category_combo.addItems(['Introduction', 'Literature Review', 'Materials & Procedures', 'Results', 'Discussion', 'Conclusions', 'Recommendations'])
+        self.category_combo.addItems(['Introduction',
+                                      'Literature Review',
+                                      'Materials & Procedures',
+                                      'Results',
+                                      'Discussion',
+                                      'Conclusions',
+                                      'Recommendations'])
 
         self.priority_label = QLabel("Priority:")
         self.priority_combo = QComboBox()
@@ -85,14 +96,23 @@ class ThesisTaskManager(QMainWindow):
             try:
                 deadline = datetime.strptime(deadline_str, "%Y-%m-%d")
             except ValueError:
-                QMessageBox.warning(self, "Warning", "Please enter the deadline in YYYY-MM-DD format.")
-                return
+                QMessageBox.warning(
+                    self, "Warning",
+                    "Please enter the deadline in YYYY-MM-DD format.")
+            return
 
-            self.tasks.append({'title': title, 'description': description, 'category': category, 'priority': priority, 'deadline': deadline})
+            self.tasks.append({'title': title,
+                               'description': description,
+                               'category': category,
+                               'priority': priority,
+                               'deadline': deadline})
             self.update_task_list()
             self.clear_task_fields()
         else:
-            QMessageBox.warning(self, "Warning", "Please fill in all required fields (title, deadline).")
+            QMessageBox.warning(
+                self,
+                "Warning",
+                "Please fill in all required fields (title, deadline).")
 
     def clear_task_fields(self):
         self.title_edit.clear()
