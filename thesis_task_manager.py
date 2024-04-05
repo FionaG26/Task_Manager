@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
 from datetime import datetime
+from tkcalendar import DateEntry  # Import DateEntry widget for date selection
 
 
 class ThesisTaskManager(tk.Tk):
@@ -59,13 +60,19 @@ class ThesisTaskManager(tk.Tk):
             bg="#d9d9d9",
             fg="#333333").pack(
             anchor=tk.W)
-        self.category_combo = ttk.Combobox(task_frame, values=['Introduction',
-                                                               'Literature Review',
-                                                               'Materials & Procedures',
-                                                               'Results',
-                                                               'Discussion',
-                                                               'Conclusions',
-                                                               'Recommendations'])
+        self.category_combo = ttk.Combobox(
+            task_frame,
+            values=[
+                'Introduction',
+                'Literature Review',
+                'Materials & Procedures',
+                'Results',
+                'Discussion',
+                'Conclusions',
+                'Recommendations'
+            ]
+        )
+
         self.category_combo.pack(fill=tk.X)
 
         tk.Label(
@@ -84,7 +91,12 @@ class ThesisTaskManager(tk.Tk):
             bg="#d9d9d9",
             fg="#333333").pack(
             anchor=tk.W)
-        self.deadline_edit = tk.Entry(task_frame)
+        self.deadline_edit = DateEntry(
+            task_frame,
+            date_pattern="yyyy-mm-dd",
+            background='dark blue',
+            foreground='white',
+            borderwidth=2)
         self.deadline_edit.pack(fill=tk.X)
 
         self.add_button = tk.Button(
@@ -109,10 +121,7 @@ class ThesisTaskManager(tk.Tk):
             text="Tasks",
             bg="#d9d9d9",
             fg="#333333",
-            font=(
-                "Helvetica",
-                12,
-                "bold")).pack(
+            font=("Helvetica", 12, "bold")).pack(
             anchor=tk.W)
 
         self.task_list_widget = tk.Listbox(
@@ -168,7 +177,7 @@ class ThesisTaskManager(tk.Tk):
         self.description_edit.delete("1.0", tk.END)
         self.category_combo.set('')
         self.priority_combo.set('')
-        self.deadline_edit.delete(0, tk.END)
+        self.deadline_edit.set_date('')
 
     # Changed parameter name to underscore to indicate it's not being used
     def on_task_double_click(self, _):
