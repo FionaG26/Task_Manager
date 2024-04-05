@@ -30,8 +30,8 @@ pip install PyQt5
 3. Run the application
  ```bash
 python thesis_task_manager.py
-
-## Usage
+```
+# Usage
 1. Launch the application.
 2. Add tasks by entering the title, description, category, priority, and deadline.
 3. View existing tasks and manage them by updating details or marking them as completed.
